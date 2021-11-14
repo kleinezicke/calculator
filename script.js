@@ -8,8 +8,9 @@ const multiplication = (x, y) => x *= y;
 const division = (x, y) => x / y;
 
 const displayDiv = document.querySelector("#display");
-const numButton = document.querySelectorAll(".num-button")
-const operatotBtn = document.querySelectorAll(".operator-button")
+const equals = document.querySelector("#equals");
+const numButton = document.querySelectorAll(".num-button");
+const operatotBtn = document.querySelectorAll(".operator-button");
 
 const buttons = () => {
 
@@ -25,6 +26,10 @@ const buttons = () => {
             storedNumber = number;
             number = "";
         })
+    })
+
+    equals.addEventListener("click", function(e){
+        displayDiv.textContent = operate(storedNumber, number, operator);
     })
 }
 
