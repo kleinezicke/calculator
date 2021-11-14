@@ -11,6 +11,7 @@ const displayDiv = document.querySelector("#display");
 const equals = document.querySelector("#equals");
 const numButton = document.querySelectorAll(".num-button");
 const operatotBtn = document.querySelectorAll(".operator-button");
+const dotBtn = document.querySelector("#dot")
 
 const buttons = () => {
 
@@ -29,7 +30,15 @@ const buttons = () => {
     })
 
     equals.addEventListener("click", function(e){
-        displayDiv.textContent = operate(storedNumber, number, operator);
+        let result = operate(storedNumber, number, operator);
+        displayDiv.textContent = result;
+        number = result;
+    })
+
+    dotBtn.addEventListener("click", function(e){
+        if (!number.includes(".")){
+            addNum(".")
+        }
     })
 }
 
