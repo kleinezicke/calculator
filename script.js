@@ -1,5 +1,6 @@
 let number = "";
-let operator;
+let storedNumber = "";
+let operator = "";
 
 const addition = (x, y) => x += y; 
 const subtraction = (x, y) => x -= y;
@@ -7,14 +8,24 @@ const multiplication = (x, y) => x *= y;
 const division = (x, y) => x / y;
 
 const displayDiv = document.querySelector("#display");
-const numButton = document.querySelectorAll(".button")
+const numButton = document.querySelectorAll(".num-button")
+const operatotBtn = document.querySelectorAll(".operator-button")
 
 const buttons = () => {
+
     numButton.forEach(element => {
         element.addEventListener("click", function(e) {
             addNum(element.id);
         })
     });
+
+    operatotBtn.forEach(element => {
+        element.addEventListener("click", function(e){
+            operator = element.id;
+            storedNumber = number;
+            number = "";
+        })
+    })
 }
 
 buttons();
