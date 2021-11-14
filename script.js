@@ -11,7 +11,15 @@ const displayDiv = document.querySelector("#display");
 const equals = document.querySelector("#equals");
 const numButton = document.querySelectorAll(".num-button");
 const operatotBtn = document.querySelectorAll(".operator-button");
-const dotBtn = document.querySelector("#dot")
+const dotBtn = document.querySelector("#dot");
+const clearBtn = document.querySelector("#clear");
+
+const clear = () => {
+    number = "";
+    storedNumber = "";
+    operator = "";
+    displayDiv.textContent = number;
+}
 
 const buttons = () => {
 
@@ -39,6 +47,10 @@ const buttons = () => {
         if (!number.includes(".")){
             addNum(".")
         }
+    })
+
+    clearBtn.addEventListener("click", function(e){
+        clear();
     })
 }
 
