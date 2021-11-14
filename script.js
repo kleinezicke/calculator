@@ -25,13 +25,13 @@ const buttons = () => {
 
     numButton.forEach(element => {
         element.addEventListener("click", function(e) {
-            addNum(element.id);
+            addNum(element.id.slice(element.id.length - 1));
         })
     });
 
     operatotBtn.forEach(element => {
         element.addEventListener("click", function(e){
-            operator = element.id;
+            operator = element.id
             storedNumber = number;
             number = "";
         })
@@ -56,21 +56,36 @@ const buttons = () => {
 
 buttons();
 
+const round = (num) => {
+    num = Math.round(num * 100000) / 100000;
+    return num;
+}
+
 function operate(num1, num2, operator) {
     let result;
-    switch (operator) {
-        case "add":
-            result = addition(num1, num2);
-            return result;
-        case "sub":
-            result = subtraction(num1, num2);
-            return result;
-        case "mult":
-            result = multiplication(num1, num2);
-            return result;
-        case "div":
-            result = division(num1, num2);
-            return result;
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
+    if (num1 == "" || num2 == "" || operator == "")
+        return number;
+    else {
+        switch (operator) {
+            case "add":
+                result = addition(num1, num2);
+                result = round(result);
+                return result;
+            case "sub":
+                result = subtraction(num1, num2);
+                result = round(result);
+                return result;
+            case "mult":
+                result = multiplication(num1, num2);
+                result = round(result);
+                return result;
+            case "div":
+                result = division(num1, num2);
+                result = round(result);
+                return result;
+        }
     }
 }
 
